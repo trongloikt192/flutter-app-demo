@@ -1,17 +1,18 @@
-import 'package:demo/home_screen.dart';
+import 'package:demo/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
 
+
+class HomeScreen extends GetView<HomeController> {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Profile Screen",
+            "Home Screen",
             style: Theme.of(context).textTheme.titleLarge,
           ),
           centerTitle: true,
@@ -23,14 +24,13 @@ class ProfileScreen extends StatelessWidget {
           children: [
             MaterialButton(
               onPressed: () => {
-                /// Go back to previous screen
-                Get.back()
+                /// Go to next screen
+                controller.goToProfile()
               },
               color: const Color(0xFFFFB700),
-              child: const Text('Back to home screen'),
+              child: const Text('Profile screen'),
             ).paddingAll(50)
           ],
-        )
-    );
+        ));
   }
 }

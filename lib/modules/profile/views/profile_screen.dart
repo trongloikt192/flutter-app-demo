@@ -1,18 +1,17 @@
+import 'package:demo/modules/profile/controllers/profile_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'profile_screen.dart';
-import 'config/routes.dart';
+class ProfileScreen extends GetView<ProfileController> {
+  const ProfileScreen({super.key});
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            "Home Screen",
+            "Profile Screen",
             style: Theme.of(context).textTheme.titleLarge,
           ),
           centerTitle: true,
@@ -24,19 +23,14 @@ class HomeScreen extends StatelessWidget {
           children: [
             MaterialButton(
               onPressed: () => {
-                /// Go to next screen
-                Get.to(const ProfileScreen()),
-
-                /// Go to next screen, and remove the previous page
-                // Get.off(const ProfileScreen()),
-
-                /// by name
-                // Get.toNamed(Routes.PROFILE),
+                /// Go back to previous screen
+                controller.backToHome()
               },
               color: const Color(0xFFFFB700),
-              child: const Text('Profile screen'),
+              child: const Text('Back to home screen'),
             ).paddingAll(50)
           ],
-        ));
+        )
+    );
   }
 }

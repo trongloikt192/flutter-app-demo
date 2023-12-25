@@ -1,9 +1,11 @@
-import 'package:demo/profile_screen.dart';
+import 'package:demo/modules/home/bindings/home_binding.dart';
+import 'package:demo/modules/profile/bindings/profile_binding.dart';
+import 'package:demo/modules/profile/views/profile_screen.dart';
 import 'package:demo/config/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'home_screen.dart';
+import 'modules/home/views/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +20,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      initialRoute: Routes.HOME,
       getPages: [
-        GetPage(name: Routes.HOME, page: () => const HomeScreen()),
-        GetPage(name: Routes.PROFILE, page: () => const ProfileScreen(), transition: Transition.downToUp),
+        GetPage(name: Routes.HOME, page: () => const HomeScreen(), binding: HomeBinding()),
+        GetPage(name: Routes.PROFILE, page: () => const ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
       ],
     );
   }
