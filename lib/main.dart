@@ -1,5 +1,5 @@
 import 'package:demo/profile_screen.dart';
-import 'package:demo/routes.dart';
+import 'package:demo/config/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
