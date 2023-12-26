@@ -27,16 +27,26 @@ class SettingScreen extends GetView<SettingController> {
                 style: Theme.of(context).textTheme.titleMedium
               ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20);
             }),
-            TextField(
-              decoration: const InputDecoration(
-                icon: Icon(Icons.person),
-                hintText: 'What do people call you?',
-                labelText: 'Name *',
-              ),
-              onChanged: (String? value) {
-                controller.onNameChanged(value);
+            Obx(() {
+              return TextFormField(
+                controller: TextEditingController()..text = controller.name.value,
+                onFieldSubmitted: (String? value) {
+                  controller.onFieldSubmitted(value);
+                },
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.person),
+                  hintText: 'What do people call you?',
+                  labelText: 'Name *',
+                ),
+              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20);
+            }),
+            MaterialButton(
+              onPressed: () => {
+                controller.onGenerateRandom(),
               },
-            ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
+              color: const Color(0xFFFFB700),
+              child: const Text('Generate random'),
+            ).paddingOnly(left: 50, right: 50)
           ],
         )
     );
