@@ -24,12 +24,10 @@ class ProfileScreen extends GetView<ProfileController> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             /// Get value from other Controller
-            // Obx(() {
-            //   return Text(
-            //       "Hi, ${settingController.name.value}",
-            //       style: Theme.of(context).textTheme.titleMedium
-            //   ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20);
-            // }),
+            Text(
+                "Hi, ",
+                style: Theme.of(context).textTheme.titleMedium
+            ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
             MaterialButton(
               onPressed: () => {
                 /// Go back to previous screen
