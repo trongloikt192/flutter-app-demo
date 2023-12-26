@@ -12,4 +12,8 @@ class HomeController extends GetxController {
     Get.toNamed(Routes.PROFILE);
   }
 
+  void goToSetting() {
+    Get.toNamed(Routes.SETTING);
+  }
+
 }

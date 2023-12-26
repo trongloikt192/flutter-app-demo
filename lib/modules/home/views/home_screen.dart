@@ -29,7 +29,15 @@ class HomeScreen extends GetView<HomeController> {
               },
               color: const Color(0xFFFFB700),
               child: const Text('Profile screen'),
-            ).paddingAll(50)
+            ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
+            MaterialButton(
+              onPressed: () => {
+                /// Go to next screen
+                controller.goToSetting()
+              },
+              color: const Color(0xFFFFB700),
+              child: const Text('Setting screen'),
+            ).paddingOnly(left: 50, right: 50)
           ],
         ));
   }

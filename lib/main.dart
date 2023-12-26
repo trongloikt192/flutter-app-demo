@@ -2,6 +2,8 @@ import 'package:demo/modules/home/bindings/home_binding.dart';
 import 'package:demo/modules/profile/bindings/profile_binding.dart';
 import 'package:demo/modules/profile/views/profile_screen.dart';
 import 'package:demo/config/routes.dart';
+import 'package:demo/modules/setting/bindings/setting_binding.dart';
+import 'package:demo/modules/setting/views/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,8 +24,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.HOME,
       getPages: [
-        GetPage(name: Routes.HOME, page: () => const HomeScreen(), binding: HomeBinding()),
-        GetPage(name: Routes.PROFILE, page: () => const ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
+        GetPage(name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding()),
+        GetPage(name: Routes.PROFILE, page: () => ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
+        GetPage(name: Routes.SETTING, page: () => SettingScreen(), binding: SettingBinding()),
       ],
     );
   }
