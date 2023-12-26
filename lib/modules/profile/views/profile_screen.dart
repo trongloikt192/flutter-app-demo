@@ -23,11 +23,19 @@ class ProfileScreen extends GetView<ProfileController> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            /// Get value from other Controller
-            Text(
-                "Hi, ",
+            Obx(() {
+              return Text(
+                "Hi, ${controller.name.value}",
                 style: Theme.of(context).textTheme.titleMedium
-            ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
+              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20);
+            }),
+            MaterialButton(
+              onPressed: () => {
+                controller.onGetNameFromStorage(),
+              },
+              color: const Color(0xFFFFB700),
+              child: const Text('Get name from storage'),
+            ).paddingOnly(left: 50, right: 50),
             MaterialButton(
               onPressed: () => {
                 /// Go back to previous screen
@@ -35,7 +43,7 @@ class ProfileScreen extends GetView<ProfileController> {
               },
               color: const Color(0xFFFFB700),
               child: const Text('Back to home screen'),
-            ).paddingAll(50)
+            ).paddingOnly(left: 50, right: 50),
           ],
         )
     );

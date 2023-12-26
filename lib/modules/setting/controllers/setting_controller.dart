@@ -1,12 +1,22 @@
 import 'dart:math';
 
+import 'package:demo/config/constants.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SettingController extends GetxController {
-  final RxString name = "".obs;
+  RxString name = "".obs;
+  late GetStorage _box;
 
   SettingController() {
     // constructor
+    _box = new GetStorage();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    this.name.value = _box.read(Constants.BOX_SETTING_NAME) ?? "";
   }
 
   void backToHome() {
@@ -36,5 +46,13 @@ class SettingController extends GetxController {
 
     // Set value to name
     this.name.value = nameList[randomIdx];
+  }
+
+  void onSaveToStorage() {
+    this._box.write(Constants.BOX_SETTING_NAME, this.name.value);
+  }
+
+  void onLoadFromStorage() {
+    this.name.value = _box.read(Constants.BOX_SETTING_NAME) ?? "";
   }
 }

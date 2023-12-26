@@ -46,6 +46,20 @@ class SettingScreen extends GetView<SettingController> {
               },
               color: const Color(0xFFFFB700),
               child: const Text('Generate random'),
+            ).paddingOnly(left: 50, right: 50),
+            MaterialButton(
+              onPressed: () => {
+                controller.onSaveToStorage(),
+              },
+              color: const Color(0xFFFFB700),
+              child: const Text('Save to storage'),
+            ).paddingOnly(left: 50, right: 50),
+            MaterialButton(
+              onPressed: () => {
+                controller.onLoadFromStorage(),
+              },
+              color: const Color(0xFFFFB700),
+              child: const Text('Load data from storage'),
             ).paddingOnly(left: 50, right: 50)
           ],
         )

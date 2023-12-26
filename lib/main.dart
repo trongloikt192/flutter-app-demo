@@ -6,10 +6,12 @@ import 'package:demo/modules/setting/bindings/setting_binding.dart';
 import 'package:demo/modules/setting/views/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'modules/home/views/home_screen.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
