@@ -8,7 +8,7 @@ import '../../../services/auth_service.dart';
 import '../../../utils/ui.dart';
 
 class AuthController extends GetxController {
-  Rx<User> currentUser = Get.find<AuthService>().user;
+  final Rx<User> currentUser = Get.find<AuthService>().user;
   late GlobalKey<FormState> loginFormKey;
   late GlobalKey<FormState> registerFormKey;
   final loading = false.obs;
@@ -55,6 +55,7 @@ class AuthController extends GetxController {
 
     try {
       currentUser.value = await _userRepository.register(currentUser.value);
+      await Get.offAllNamed(Routes.HOME);
     } catch (e) {
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     } finally {

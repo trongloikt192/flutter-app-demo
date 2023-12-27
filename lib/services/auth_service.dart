@@ -26,8 +26,6 @@ class AuthService extends GetxService {
   Future getCurrentUser() async {
     if (user.value.auth == null && _box.hasData(Constants.BOX_CURRENT_USER)) {
       user.value = User.fromJson(await _box.read(Constants.BOX_CURRENT_USER));
-      print('object');
-      print(user.value);
       user.value.auth = true;
     } else {
       user.value.auth = false;
@@ -36,8 +34,8 @@ class AuthService extends GetxService {
 
   Future removeCurrentUser() async {
     user.value = new User();
-    await _usersRepo.logout();
     await _box.remove(Constants.BOX_CURRENT_USER);
+    await _usersRepo.logout();
   }
 
   bool get isAuth => user.value.auth ?? false;

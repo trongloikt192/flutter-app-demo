@@ -23,6 +23,16 @@ class RegisterScreen extends GetView<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
+                onSaved: (input) => controller.currentUser.value.name = input,
+                validator: (input) => input!.length < 3
+                    ? "Should be more than 3 characters".tr
+                    : null,
+                decoration: InputDecoration(
+                  icon: const Icon(Icons.person),
+                  labelText: 'Your name'.tr,
+                ),
+              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
+              TextFormField(
                 onSaved: (input) => controller.currentUser.value.email = input,
                 validator: (input) => input!.length < 3
                     ? "Should be more than 3 characters".tr
@@ -32,7 +42,8 @@ class RegisterScreen extends GetView<AuthController> {
                   labelText: 'Username'.tr,
                 ),
               ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
-              TextFormField(
+              Obx(() => TextFormField(
+                initialValue: controller.currentUser.value.password,
                 onSaved: (input) => controller.currentUser.value.password = input,
                 validator: (input) => input!.length < 6
                     ? "Should be more than 6 characters".tr
@@ -41,16 +52,7 @@ class RegisterScreen extends GetView<AuthController> {
                   icon: const Icon(Icons.key),
                   labelText: 'Password'.tr,
                 ),
-              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
-              TextFormField(
-                validator: (input) => input != controller.currentUser.value.password
-                    ? "Password confirmation must same".tr
-                    : null,
-                decoration: InputDecoration(
-                  icon: const Icon(Icons.key),
-                  labelText: 'Password Confirmation'.tr,
-                ),
-              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
+              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20)),
               MaterialButton(
                 onPressed: () => controller.register(),
                 color: const Color(0xFFFFB700),
