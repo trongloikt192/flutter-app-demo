@@ -37,6 +37,13 @@ class HomeScreen extends GetView<HomeController> {
               },
               color: const Color(0xFFFFB700),
               child: const Text('Setting screen'),
+            ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
+            MaterialButton(
+              onPressed: () => {
+                controller.onLogout()
+              },
+              color: const Color(0xFFFFB700),
+              child: const Text('Logout'),
             ).paddingOnly(left: 50, right: 50)
           ],
         ));

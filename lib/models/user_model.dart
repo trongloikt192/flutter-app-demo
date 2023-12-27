@@ -5,6 +5,7 @@ class User extends Model {
   String? _email;
   String? _password;
   String? _apiToken;
+  String? _accessToken;
   String? _deviceToken;
   bool? _auth;
 
@@ -14,12 +15,14 @@ class User extends Model {
       String? email,
       String? password,
       String? apiToken,
+      String? accessToken,
       String? deviceToken,
       bool? auth}) {
     this.id = id;
     _auth = auth;
     _deviceToken = deviceToken;
     _apiToken = apiToken;
+    _accessToken = accessToken;
     _password = password;
     _email = email;
     _name = name;
@@ -29,6 +32,7 @@ class User extends Model {
     _name = stringFromJson(json, 'name');
     _email = stringFromJson(json, 'email');
     _apiToken = stringFromJson(json, 'api_token');
+    _accessToken = stringFromJson(json, 'access_token');
     _deviceToken = stringFromJson(json, 'device_token');
     _auth = boolFromJson(json, 'auth');
     super.fromJson(json);
@@ -44,6 +48,18 @@ class User extends Model {
 
   set apiToken(String? value) {
     _apiToken = value;
+  }
+
+  String get accessToken {
+    if ((_auth ?? false)) {
+      return _accessToken ?? '';
+    } else {
+      return '';
+    }
+  }
+
+  set accessToken(String? value) {
+    _accessToken = value;
   }
 
   bool? get auth => _auth;
@@ -71,6 +87,7 @@ class User extends Model {
       email.hashCode ^
       password.hashCode ^
       apiToken.hashCode ^
+      accessToken.hashCode ^
       deviceToken.hashCode ^
       auth.hashCode;
 
@@ -95,6 +112,7 @@ class User extends Model {
       email == other.email &&
       password == other.password &&
       apiToken == other.apiToken &&
+      accessToken == other.accessToken &&
       deviceToken == other.deviceToken &&
       auth == other.auth;
 
@@ -107,6 +125,7 @@ class User extends Model {
       data['password'] = this.password;
     }
     data['api_token'] = this._apiToken;
+    data['access_token'] = this._accessToken;
     if (_deviceToken != null) {
       data["device_token"] = deviceToken;
     }

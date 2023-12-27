@@ -44,8 +44,9 @@ class Backend01Provider extends GetxService with ApiClient {
       options: optionsNetwork,
     );
     if (response.data['success'] == true) {
-      response.data['data']['auth'] = true;
-      return User.fromJson(response.data['data']);
+      var data = response.data['data'];
+      data['auth'] = true;
+      return User.fromJson(data);
     } else {
       throw new Exception(response.data['message']);
     }

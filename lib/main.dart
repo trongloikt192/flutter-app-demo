@@ -1,4 +1,5 @@
 import 'package:demo/middlewares/auth_middleware.dart';
+import 'package:demo/middlewares/guest_middleware.dart';
 import 'package:demo/modules/auth/bindings/auth_binding.dart';
 import 'package:demo/modules/auth/views/login_screen.dart';
 import 'package:demo/modules/auth/views/register_screen.dart';
@@ -35,8 +36,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.HOME,
       getPages: [
-        GetPage(name: Routes.LOGIN, page: () => LoginScreen(), binding: AuthBinding()),
-        GetPage(name: Routes.REGISTER, page: () => RegisterScreen(), binding: AuthBinding()),
+        GetPage(name: Routes.LOGIN, page: () => LoginScreen(), binding: AuthBinding(), middlewares: [GuestMiddleware()]),
+        GetPage(name: Routes.REGISTER, page: () => RegisterScreen(), binding: AuthBinding(), middlewares: [GuestMiddleware()]),
 
         GetPage(name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding(), middlewares: [AuthMiddleware()]),
         GetPage(name: Routes.PROFILE, page: () => ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
