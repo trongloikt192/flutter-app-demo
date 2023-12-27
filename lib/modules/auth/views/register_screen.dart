@@ -52,7 +52,7 @@ class RegisterScreen extends GetView<AuthController> {
                 ),
               ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
               MaterialButton(
-                onPressed: () => {controller.register()},
+                onPressed: () => controller.register(),
                 color: const Color(0xFFFFB700),
                 child: Text('Register'.tr),
               ).paddingOnly(left: 50, right: 50),

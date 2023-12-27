@@ -1,4 +1,5 @@
 import 'package:demo/modules/home/controllers/home_controller.dart';
+import 'package:demo/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +23,12 @@ class HomeScreen extends GetView<HomeController> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Obx(() {
+              return Text(
+                  "Hi, ${Get.find<AuthService>().name}",
+                  style: Theme.of(context).textTheme.titleMedium
+              ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20);
+            }),
             MaterialButton(
               onPressed: () => {
                 /// Go to next screen

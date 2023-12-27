@@ -37,7 +37,6 @@ class AuthController extends GetxController {
     try {
       currentUser.value = await _userRepository.login(currentUser.value);
       await Get.offAllNamed(Routes.HOME);
-      Get.showSnackbar(Ui.SuccessSnackBar(message: "Login successfully!".tr));
     } catch (e) {
       Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     } finally {
@@ -57,7 +56,7 @@ class AuthController extends GetxController {
     try {
       currentUser.value = await _userRepository.register(currentUser.value);
     } catch (e) {
-      // Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
+      Get.showSnackbar(Ui.ErrorSnackBar(message: e.toString()));
     } finally {
       loading.value = false;
     }

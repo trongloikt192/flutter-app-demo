@@ -12,6 +12,7 @@ mixin ApiClient {
   final globalService = Get.find<GlobalService>();
   final authService = Get.find<AuthService>();
   String baseUrl = '';
+  String accessToken = '';
   late DioClient _httpClient;
   late dio.Options _optionsNetwork;
   late dio.Options _optionsCache;
@@ -23,7 +24,7 @@ mixin ApiClient {
   dio.Options get optionsCache => _optionsCache;
 
   Future<ApiClient> init() async {
-    _httpClient = DioClient(this.baseUrl, new dio.Dio());
+    _httpClient = DioClient(this.baseUrl, this.accessToken, new dio.Dio());
     _optionsNetwork = _httpClient.optionsNetwork;
     _optionsCache = _httpClient.optionsCache;
     return this;

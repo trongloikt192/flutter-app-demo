@@ -12,6 +12,7 @@ const _defaultReceiveTimeout = Duration.millisecondsPerMinute;
 
 class DioClient {
   final String baseUrl;
+  final String accessToken;
 
   late Dio _dio;
   late Options optionsNetwork;
@@ -21,6 +22,7 @@ class DioClient {
 
   DioClient(
       this.baseUrl,
+      this.accessToken,
       Dio? dio, {
         this.interceptors,
       }) {
@@ -30,7 +32,12 @@ class DioClient {
       ..options.connectTimeout = _defaultConnectTimeout
       ..options.receiveTimeout = _defaultReceiveTimeout
       ..httpClientAdapter
-      ..options.headers = {'Content-Type': 'application/json; charset=UTF-8', 'X-Requested-With': 'XMLHttpRequest', 'Accept-Language': 'en'};
+      ..options.headers = {
+        'Authorization': 'Bearer ${this.accessToken}',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Accept-Language': 'en'
+    };
     if (interceptors?.isNotEmpty ?? false) {
       _dio.interceptors.addAll(interceptors ?? []);
     }

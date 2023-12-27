@@ -16,5 +16,8 @@ class UserRepository {
     return _backend01Provider.register(user);
   }
 
-  Future signOut() async {}
+  Future logout() async {
+    _backend01Provider = Get.find<Backend01Provider>();
+    return _backend01Provider.logout();
+  }
 }

@@ -16,8 +16,8 @@ class AuthService extends GetxService {
   }
 
   Future<AuthService> init() async {
-    user.listen((User _user) {
-      _box.write(Constants.BOX_CURRENT_USER, _user.toJson());
+    user.listen((User data) {
+      _box.write(Constants.BOX_CURRENT_USER, data.toJson());
     });
     await getCurrentUser();
     return this;
@@ -25,7 +25,9 @@ class AuthService extends GetxService {
 
   Future getCurrentUser() async {
     if (user.value.auth == null && _box.hasData(Constants.BOX_CURRENT_USER)) {
-      user.value = User.fromJson(_box.read(Constants.BOX_CURRENT_USER));
+      user.value = User.fromJson(await _box.read(Constants.BOX_CURRENT_USER));
+      print('object');
+      print(user.value);
       user.value.auth = true;
     } else {
       user.value.auth = false;
@@ -34,11 +36,13 @@ class AuthService extends GetxService {
 
   Future removeCurrentUser() async {
     user.value = new User();
-    await _usersRepo.signOut();
+    await _usersRepo.logout();
     await _box.remove(Constants.BOX_CURRENT_USER);
   }
 
   bool get isAuth => user.value.auth ?? false;
 
-  String get apiToken => user.value.apiToken;
+  String get accessToken => user.value.accessToken ?? '';
+
+  String get name => user.value.name ?? '';
 }
