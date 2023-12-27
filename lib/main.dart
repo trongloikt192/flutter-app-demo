@@ -18,6 +18,8 @@ import 'package:get_storage/get_storage.dart';
 import 'modules/home/views/home_screen.dart';
 import 'services/auth_service.dart';
 import 'services/global_service.dart';
+import 'services/setting_service.dart';
+import 'services/translate_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.PROFILE, page: () => ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
         GetPage(name: Routes.SETTING, page: () => SettingScreen(), binding: SettingBinding()),
       ],
+      locale: Get.find<TranslationService>().getLocale(),
     );
   }
 }
@@ -54,6 +57,7 @@ Future<void> initServices() async {
   await Get.putAsync(() => GlobalService().init());
   await Get.putAsync(() => AuthService().init());
   await Get.putAsync(() => Backend01Provider().init());
-  // await Get.putAsync(() => TranslationService().init());
+  await Get.putAsync(() => SettingsService().init());
+  await Get.putAsync(() => TranslationService().init());
   Get.log('All services started...');
 }

@@ -1,8 +1,11 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:demo/config/constants.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+import '../../../services/translate_service.dart';
 
 class SettingController extends GetxController {
   RxString name = "".obs;
@@ -54,5 +57,11 @@ class SettingController extends GetxController {
 
   void onLoadFromStorage() {
     this.name.value = _box.read(Constants.BOX_SETTING_NAME) ?? "";
+  }
+
+  onChangeLanguage(String value) async {
+    await Get.find<TranslationService>().loadTranslation(locale: value);
+    Get.updateLocale(Locale(value));
+    await _box.write(Constants.BOX_SETTING_LANGUAGE, value);
   }
 }
