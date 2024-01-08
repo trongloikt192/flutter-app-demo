@@ -47,6 +47,7 @@ dependencies:
 
   # Env
   flutter_dotenv: ^5.0.2
+  barcode_scan2: ^4.3.0
 
 dev_dependencies:
   flutter_test:

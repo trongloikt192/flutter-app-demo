@@ -13,7 +13,7 @@ class RootController extends GetxController {
 
   List<String> pages = [
     Routes.HOME,
-    Routes.PROFILE,
+    Routes.QR_SCAN,
     Routes.PROFILE,
     Routes.SETTING,
   ];

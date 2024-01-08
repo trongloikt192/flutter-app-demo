@@ -1,4 +1,5 @@
-import 'package:demo/modules/root/bindings/root_binding.dart';
+import 'package:demo/modules/qrscan/bindings/qrscan_binding.dart';
+import 'package:demo/modules/qrscan/views/qrscan_screen.dart';
 import 'package:get/get.dart' show GetPage, Transition;
 
 import '../middlewares/auth_middleware.dart';
@@ -17,9 +18,8 @@ class Routes {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
 
-
-
   static const HOME = '/home';
+  static const QR_SCAN = '/qr_scan';
   static const PROFILE = '/profile';
   static const SETTING = '/setting';
 
@@ -29,7 +29,8 @@ class Routes {
     GetPage(name: REGISTER, page: () => RegisterScreen(), binding: AuthBinding(), middlewares: [GuestMiddleware()]),
 
     GetPage(name: HOME, page: () => HomeScreen(), binding: HomeBinding(), middlewares: [AuthMiddleware()]),
-    GetPage(name: PROFILE, page: () => ProfileScreen(), binding: ProfileBinding()),
-    GetPage(name: SETTING, page: () => SettingScreen(), binding: SettingBinding()),
+    GetPage(name: QR_SCAN, page: () => QRScanScreen(), binding: QRScanBinding(), middlewares: [AuthMiddleware()]),
+    GetPage(name: PROFILE, page: () => ProfileScreen(), binding: ProfileBinding(), middlewares: [AuthMiddleware()]),
+    GetPage(name: SETTING, page: () => SettingScreen(), binding: SettingBinding(), middlewares: [AuthMiddleware()]),
   ];
 }

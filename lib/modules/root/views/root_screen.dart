@@ -10,13 +10,15 @@ class RootScreen extends GetView<RootController> {
   final Scaffold container;
 
   final bool hideAppBar;
+  final List<Widget>? appBarActions;
   final bool showDrawer;
 
-  RootScreen(
-      {required this.container,
+  const RootScreen({super.key, required this.container,
       this.title = "",
       this.hideAppBar = false,
-      this.showDrawer = false});
+      this.showDrawer = false,
+      this.appBarActions,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class RootScreen extends GetView<RootController> {
               ),
               centerTitle: true,
               backgroundColor: const Color(0xFFFFB700),
+              actions: appBarActions ?? [],
             ),
       body: container,
       bottomNavigationBar: Obx(() {
