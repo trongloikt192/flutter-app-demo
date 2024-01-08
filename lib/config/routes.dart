@@ -1,3 +1,4 @@
+import 'package:demo/modules/root/bindings/root_binding.dart';
 import 'package:get/get.dart' show GetPage, Transition;
 
 import '../middlewares/auth_middleware.dart';
@@ -28,7 +29,7 @@ class Routes {
     GetPage(name: REGISTER, page: () => RegisterScreen(), binding: AuthBinding(), middlewares: [GuestMiddleware()]),
 
     GetPage(name: HOME, page: () => HomeScreen(), binding: HomeBinding(), middlewares: [AuthMiddleware()]),
-    GetPage(name: PROFILE, page: () => ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
+    GetPage(name: PROFILE, page: () => ProfileScreen(), binding: ProfileBinding()),
     GetPage(name: SETTING, page: () => SettingScreen(), binding: SettingBinding()),
   ];
 }

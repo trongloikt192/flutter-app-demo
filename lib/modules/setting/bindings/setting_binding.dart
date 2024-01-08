@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class SettingBinding extends Bindings {
   @override
   void dependencies() {
-    Get.put(SettingController()/*, permanent: true*/);
+    Get.put(SettingController());
   }
 }

@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       initialRoute: Routes.HOME,
       getPages: Routes.config,
       locale: Get.find<TranslationService>().getLocale(),
+      defaultTransition: Transition.noTransition,
     );
   }
 }

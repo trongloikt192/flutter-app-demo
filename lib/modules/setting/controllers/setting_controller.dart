@@ -5,7 +5,9 @@ import 'package:demo/config/constants.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../config/routes.dart';
 import '../../../services/translate_service.dart';
+import '../../root/controllers/root_controller.dart';
 
 class SettingController extends GetxController {
   RxString name = "".obs;
@@ -23,7 +25,7 @@ class SettingController extends GetxController {
   }
 
   void backToHome() {
-    Get.back();
+    Get.find<RootController>().changePageByName(Routes.HOME);
   }
 
   void onFieldSubmitted(value) {
