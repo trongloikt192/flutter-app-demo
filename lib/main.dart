@@ -1,21 +1,10 @@
-import 'package:demo/middlewares/auth_middleware.dart';
-import 'package:demo/middlewares/guest_middleware.dart';
-import 'package:demo/modules/auth/bindings/auth_binding.dart';
-import 'package:demo/modules/auth/views/login_screen.dart';
-import 'package:demo/modules/auth/views/register_screen.dart';
-import 'package:demo/modules/home/bindings/home_binding.dart';
-import 'package:demo/modules/profile/bindings/profile_binding.dart';
-import 'package:demo/modules/profile/views/profile_screen.dart';
 import 'package:demo/config/routes.dart';
-import 'package:demo/modules/setting/bindings/setting_binding.dart';
-import 'package:demo/modules/setting/views/setting_screen.dart';
 import 'package:demo/providers/backend01_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'modules/home/views/home_screen.dart';
 import 'services/auth_service.dart';
 import 'services/global_service.dart';
 import 'services/setting_service.dart';
@@ -37,14 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.HOME,
-      getPages: [
-        GetPage(name: Routes.LOGIN, page: () => LoginScreen(), binding: AuthBinding(), middlewares: [GuestMiddleware()]),
-        GetPage(name: Routes.REGISTER, page: () => RegisterScreen(), binding: AuthBinding(), middlewares: [GuestMiddleware()]),
-
-        GetPage(name: Routes.HOME, page: () => HomeScreen(), binding: HomeBinding(), middlewares: [AuthMiddleware()]),
-        GetPage(name: Routes.PROFILE, page: () => ProfileScreen(), binding: ProfileBinding(), transition: Transition.downToUp),
-        GetPage(name: Routes.SETTING, page: () => SettingScreen(), binding: SettingBinding()),
-      ],
+      getPages: Routes.config,
       locale: Get.find<TranslationService>().getLocale(),
     );
   }
