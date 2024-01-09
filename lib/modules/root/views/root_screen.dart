@@ -29,10 +29,8 @@ class RootScreen extends GetView<RootController> {
           : AppBar(
               title: Text(
                 title.tr,
-                style: Theme.of(context).textTheme.titleLarge,
               ),
               centerTitle: true,
-              backgroundColor: const Color(0xFFFFB700),
               actions: appBarActions ?? [],
             ),
       body: container,

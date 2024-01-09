@@ -29,6 +29,9 @@ class MyApp extends StatelessWidget {
       getPages: Routes.config,
       locale: Get.find<TranslationService>().getLocale(),
       defaultTransition: Transition.noTransition,
+      themeMode: Get.find<SettingsService>().getThemeMode(),
+      theme: Get.find<SettingsService>().getLightTheme(),
+      darkTheme: Get.find<SettingsService>().getDarkTheme(),
     );
   }
 }

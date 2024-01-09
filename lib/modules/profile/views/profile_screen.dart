@@ -18,15 +18,15 @@ class ProfileScreen extends GetView<ProfileController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Hi, ${Get.find<AuthService>().user.value.name}",
-                    style: Theme.of(context).textTheme.titleMedium
+                    style: context.theme.textTheme.titleMedium
                 ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
                 MaterialButton(
                   onPressed: () => {
                     /// Go back to previous screen
                     controller.backToHome()
                   },
-                  color: const Color(0xFFFFB700),
-                  child: const Text('Back to home screen'),
+                  color: context.theme.colorScheme.primary,
+                  child: Text('Back to home screen'.tr),
                 ).paddingOnly(left: 50, right: 50),
               ],
             )

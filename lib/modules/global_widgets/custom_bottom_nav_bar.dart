@@ -59,14 +59,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                   ),
                   widget.currentIndex == index
                       ? Expanded(
-                    flex: 2,
-                    child: Text(
-                      label,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: widget.currentIndex == index ? color : color.withOpacity(0.5)),
-                    ),
-                  )
+                        flex: 2,
+                        child: Text(
+                          label,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: widget.currentIndex == index ? color : color.withOpacity(0.5)),
+                        ),
+                      )
                       : Container()
                 ],
               ),

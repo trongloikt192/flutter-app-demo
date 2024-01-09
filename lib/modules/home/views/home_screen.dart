@@ -19,7 +19,7 @@ class HomeScreen extends GetView<HomeController> {
                 children: [
               Obx(() {
                 return Text("${"Hi".tr}, ${Get.find<AuthService>().name}",
-                        style: Theme.of(context).textTheme.titleMedium)
+                        style: context.theme.textTheme.titleLarge)
                     .paddingOnly(left: 50, right: 50)
                     .marginOnly(bottom: 20);
               }),
@@ -28,7 +28,7 @@ class HomeScreen extends GetView<HomeController> {
                   /// Go to next screen
                   controller.goToProfile()
                 },
-                color: const Color(0xFFFFB700),
+                color: context.theme.colorScheme.primary,
                 child: Text('Profile screen'.tr),
               ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
               MaterialButton(
@@ -36,7 +36,7 @@ class HomeScreen extends GetView<HomeController> {
                   /// Go to next screen
                   controller.goToSetting()
                 },
-                color: const Color(0xFFFFB700),
+                color: context.theme.colorScheme.primary,
                 child: Text('Setting screen'.tr),
               ).paddingOnly(left: 50, right: 50).marginOnly(bottom: 20),
             ])

@@ -13,7 +13,7 @@ class LoginScreen extends GetView<AuthController> {
       appBar: AppBar(
         title: Text(
           "Login Screen",
-          style: Theme.of(context).textTheme.titleLarge,
+          style: context.theme.textTheme.titleLarge,
         ),
         centerTitle: true,
         backgroundColor: const Color(0xFFFFB700),

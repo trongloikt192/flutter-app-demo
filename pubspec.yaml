@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_html: 3.0.0-alpha.3
 
+  # FONT
+  google_fonts: 4.0.4
+
   # GetX
   get: ^4.6.6
   get_storage: ^2.1.1

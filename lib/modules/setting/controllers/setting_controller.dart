@@ -1,7 +1,8 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:demo/config/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -65,5 +66,20 @@ class SettingController extends GetxController {
     await Get.find<TranslationService>().loadTranslation(locale: value);
     Get.updateLocale(Locale(value));
     await _box.write(Constants.BOX_SETTING_LANGUAGE, value);
+  }
+
+  onChangeThemeMode(ThemeMode themeMode) async {
+    Get.changeThemeMode(themeMode);
+    if (themeMode == ThemeMode.dark) {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle.dark.copyWith(systemNavigationBarColor: Colors.black87),
+      );
+    } else {
+      SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle.light.copyWith(systemNavigationBarColor: Colors.white),
+      );
+    }
+    _box.write(Constants.BOX_SETTING_THEME_MODE, themeMode.toString());
+    Get.rootController.refresh();
   }
 }
