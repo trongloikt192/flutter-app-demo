@@ -120,7 +120,7 @@ class QRScanScreen extends GetView<QRScanController> {
                         ? false
                         : null,
                     onChanged: (checked) {
-                        controller.selectedFormats = [
+                        controller.selectedFormats.value = [
                           if (checked ?? false) ...QRScanController.possibleFormats,
                         ];
                     },

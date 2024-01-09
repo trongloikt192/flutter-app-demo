@@ -16,10 +16,10 @@ class QRScanController extends GetxController {
   final useAutoFocus = true.obs;
   final autoEnableFlash = false.obs;
 
-  static final possibleFormats = BarcodeFormat.values.toList()
-    ..removeWhere((e) => e == BarcodeFormat.unknown);
+  static final RxList<BarcodeFormat> possibleFormats = (BarcodeFormat.values.toList()
+    ..removeWhere((e) => e == BarcodeFormat.unknown)).obs;
 
-  List<BarcodeFormat> selectedFormats = [...possibleFormats];
+  RxList<BarcodeFormat> selectedFormats = [...possibleFormats].obs;
 
 
   QRScanController() {
