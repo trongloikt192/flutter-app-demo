@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:wakelock/wakelock.dart';
 
 import 'services/auth_service.dart';
 import 'services/global_service.dart';
@@ -12,6 +13,7 @@ import 'services/translate_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Wakelock.enable(); // To keep the screen on
   await initServices();
   runApp(const MyApp());
 }
